@@ -1,30 +1,35 @@
-#ifndef __PEGAITIVARN_INI_HPP_
-#define __PEGAITIVARN_INI_HPP_
+#ifndef __PEGAITIVARN_FILE_INI_HPP_
+#define __PEGAITIVARN_FILE_INI_HPP_
 #include <algorithm> 
 #include <cctype>
 #include <locale>
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
 #include "../text/trim.hpp"
 
 
-namespace pai_ini{
+namespace pai_file{
 
-struct ini_line {
+struct Ini_line {
     bool success = false;
     std::string section;
     std::string key;
     std::string value;
 };
 
-class ProcessorClass { 
+class Ini { 
   private:
     std::string section_name;
-    std::map<std::string, std::map<std::string, std::string>> db;
-    ini_line splitter (std::string &input_){
-        ini_line out;
+    std::map<
+      std::string, 
+      std::map<
+        std::string, std::string
+      >
+    > db;
+    Ini_line splitter (std::string &input_){
+        Ini_line out;
+        pai_text::trim(input_);
         int i;
         int size = input_.size();
         if(
@@ -33,7 +38,8 @@ class ProcessorClass {
         )
             return out;
         if(
-          input_[0] == '['
+          input_[0] == '[' &&
+          input_[input_.size()-1] == ']'
         ){
             this->sectionNameRead(input_);
             return out;
@@ -48,22 +54,25 @@ class ProcessorClass {
         out.section = this->section_name;
         pai_text::trim(out.key);
         pai_text::trim(out.value);
+        if( out.key.size() > 0 && out.value.size() > 0)
+            out.success = true;
         return out;
     };
     void sectionNameRead(std::string &input_){
         int i;
         int size = input_.size();
-        for(i = 0; size > i ; i++)
-            if(input_[i] == ']')
-               break;
-        this->section_name = input_.substr(0,i-1);
-        pai_text::trim(section_name);
+        std::string section = "";
+        for(i = 1; size-1 > i ; i++)
+            section += input_[i];
+        if (1 > section.size())
+            return ;
+        this->section_name = section;
     };
   public:
-    void read (std::string &file_name){
+    void read (std::string file_name){
          std::string section_name = "default";
          std::string line;
-         ini_line one;
+         Ini_line one;
          std::ifstream ini_file;
          ini_file.open(file_name);
          while(getline(ini_file, line)){
@@ -75,30 +84,7 @@ class ProcessorClass {
     std::map<std::string, std::map<std::string, std::string>> all(){
         return this->db;
     };
-    std::map<std::string, std::map<std::string, std::string>> get(
-      std::string &section,
-      std::string &name
-    ){
-        return this->db[section][name];
-    };
 
-};
-
-pai_ini::ProcessorClass * mainClass = new pai_ini::ProcessorClass();
-
-void read (std::string file_name){
-    pai_ini::mainClass->read(file_name);
-}; 
-
-std::string get (
-  std::string section,
-  std::string name
-){
-    return pai_ini::mainClass->get(section, name);
-};
-
-std::map<std::string, std::map<std::string, std::string>> all(){
-    return pai_ini::mainClass->all();
 };
 }
 

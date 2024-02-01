@@ -39,11 +39,11 @@ example_salted_serial:
 example_one_time_pin:
 	${C} ${CFLAGS_DEBUG} onetimepin example/buffer/one_time_pin.cpp 
 
-example_config:
-	${C} ${CFLAGS_DEBUG} config example/buffer/config.cpp 
-
 example_verbose:
 	${C} ${CFLAGS_DEBUG} verbose example/tools/verbose.cpp 
+
+example_ini:
+	${C} ${CFLAGS_DEBUG} ini example/file/ini.cpp 
 
 examples: example_memusage example_battery \
  example_time \
@@ -51,7 +51,6 @@ examples: example_memusage example_battery \
  example_serial example_salted_serial\
  example_one_time_pin \
  example_input_string example_input_integer \
- example_config \
  example_verbose \
- example_console_helper_termios
-
+ example_console_helper_termios \
+ example_ini
