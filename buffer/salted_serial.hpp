@@ -1,3 +1,5 @@
+#ifndef __PEGAITIVARN_BUFFER_SALTED_SERIAL_HPP
+#define __PEGAITIVARN_BUFFER_SALTED_SERIAL_HPP
 #include <string>
 #include <memory>
 #include "serial.hpp"
@@ -27,3 +29,4 @@ class SaltedSerial{
     };
 };
 }
+#endif
