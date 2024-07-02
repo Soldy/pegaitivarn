@@ -1,10 +1,10 @@
 #include <memory>
 #include <vector>
-#include "cputemp.hpp"
+#include "../../hwmon/cputemp.hpp"
 
 int main(){
     std::vector<double> temps;
-    std::shared_ptr<cputemp_cpp::Reader> temp (new cputemp_cpp::Reader());
+    std::shared_ptr<pai_cputemp::Reader> temp (new pai_cputemp::Reader());
     temp->discovery();
     temp->refresh();
     temps = temp->tempAll();
