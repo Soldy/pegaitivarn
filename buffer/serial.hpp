@@ -1,5 +1,5 @@
-#ifndef __PEGAITIVARN_BUFFER_SERIAL
-#define __PEGAITIVARN_BUFFER_SERIAL
+#ifndef __PEGAITIVARN_BUFFER_SERIAL_HPP
+#define __PEGAITIVARN_BUFFER_SERIAL_HPP
 #include <cstdint>
 #include <atomic>
 #include <iostream>
