@@ -1,49 +1,54 @@
 C = g++
-CFLAGS = -Wall -Wextra -std=c++23 -o 
+CFLAGS = -Wall -Wextra -std=c++23
 CFLAGS_DEBUG = -g ${CFLAGS}
-CFLAGS_RELASE = -O2 ${CFLAGS} 
+CFLAGS_RELEASE = -O2 ${CFLAGS}
+
+BUILD_DIR = build
 
 example_time:
-	${C} ${CFLAGS_DEBUG} time example/tools/time.cpp
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/time example/tools/time.cpp
 
 example_input_string:
-	${C} ${CFLAGS_DEBUG} input_string example/tools/input_string.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/input_string example/tools/input_string.cpp
 
 example_input_integer:
-	${C} ${CFLAGS_DEBUG} input_integer example/tools/input_integer.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/input_integer example/tools/input_integer.cpp
 
 example_console_helper_termios:
-	${C} ${CFLAGS_DEBUG} console_helper_termios example/tools/console_helper_termios.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/console_helper_termios example/tools/console_helper_termios.cpp
 
 example_random_string:
-	${C} ${CFLAGS_DEBUG} random_string example/tools/random/string.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/random_string example/tools/random/string.cpp
 
 example_random_integer:
-	${C} ${CFLAGS_DEBUG} random_integer example/tools/random/integer.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/random_integer example/tools/random/integer.cpp
 
 example_memusage:
-	${C} ${CFLAGS_DEBUG} memusage example/hwmon/memusage.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/memusage example/hwmon/memusage.cpp
 
 example_battery:
-	${C} ${CFLAGS_DEBUG} battery example/hwmon/battery.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/battery example/hwmon/battery.cpp
 
 example_cpuusage:
-	${C} ${CFLAGS_DEBUG} cpuusage example/hwmon/cpuusage.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/cpuusage example/hwmon/cpuusage.cpp
 
 example_serial:
-	${C} ${CFLAGS_DEBUG} serial example/buffer/serial.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/serial example/buffer/serial.cpp
 
 example_salted_serial:
-	${C} ${CFLAGS_DEBUG} salted_serial example/buffer/salted_serial.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/salted_serial example/buffer/salted_serial.cpp
 
 example_one_time_pin:
-	${C} ${CFLAGS_DEBUG} onetimepin example/buffer/one_time_pin.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/onetimepin example/buffer/one_time_pin.cpp
+
+example_config:
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/config example/buffer/config.cpp
 
 example_verbose:
-	${C} ${CFLAGS_DEBUG} verbose example/tools/verbose.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/verbose example/tools/verbose.cpp
 
 example_ini:
-	${C} ${CFLAGS_DEBUG} ini example/file/ini.cpp 
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/ini example/file/ini.cpp 
 
 examples: example_memusage example_battery \
  example_time \
@@ -54,3 +59,10 @@ examples: example_memusage example_battery \
  example_verbose \
  example_console_helper_termios \
  example_ini
+
+# Ensure the build directory exists
+${BUILD_DIR}:
+	mkdir -p ${BUILD_DIR}
+
+# Clean up
+example_time example_input_string example_input_integer example_console_helper_termios example_random_string example_random_integer example_memusage example_battery example_cpuusage example_serial example_salted_serial example_one_time_pin example_config example_verbose example_console_helper_termios example_ini: ${BUILD_DIR}
