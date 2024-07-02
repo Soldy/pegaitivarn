@@ -2,7 +2,7 @@
  * I built a minimum of 30 roulette games in my life 
  * I always wanted to build a good one. 
  * But we always have no time to do one that can manage
- * every situation, and the perfect enemy of profit.
+ * every situation, and the perfect is enemy of profit.
  *
  * This is part of a hobby roulette game tool.
  */
