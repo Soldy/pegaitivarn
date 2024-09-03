@@ -50,6 +50,9 @@ example_verbose:
 example_ini:
 	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/ini example/file/ini.cpp 
 
+example_csv:
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/csv example/file/csv.cpp
+
 examples: example_memusage example_battery \
  example_time \
  example_cpuusage \
