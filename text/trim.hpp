@@ -1,5 +1,5 @@
-#ifndef __PEGAITIVARN_BUFFER_SERIAL
-#define __PEGAITIVARN_BUFFER_SERIAL
+#ifndef __PAI_TEXT_TRIM
+#define __PAI_TEXT_TRIM
 
 #include <algorithm> 
 #include <cctype>
