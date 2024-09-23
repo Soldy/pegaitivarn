@@ -1,3 +1,5 @@
+#ifndef __PAI_HWMON_CPUUSAGE
+#define __PAI_HWMON_CPUUSAGE
 #include <vector>
 #include <string>
 #include <map>
@@ -40,3 +42,4 @@ void update(){
 };
 }
 
+#endif
