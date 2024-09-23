@@ -1,3 +1,5 @@
+#ifndef __PAI_HWMON_CPUTEMP
+#define __PAI_HWMON_CPUTEMP
 #include <set>
 #include <vector>
 #include <string>
@@ -168,3 +170,4 @@ class Reader{
     };
 };
 }
+#endif
