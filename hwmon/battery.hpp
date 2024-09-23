@@ -1,3 +1,5 @@
+#ifndef __PAI_HWMON_BATTERY
+#define __PAI_HWMON_BATTERY
 #include <set>
 #include <vector>
 #include <string>
@@ -89,3 +91,5 @@ class Reader{
     };
 };
 }
+
+#endif
