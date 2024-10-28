@@ -8,6 +8,9 @@ BUILD_DIR = build
 example_time:
 	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/time example/tools/time.cpp
 
+example_text_safe:
+	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/safe example/text/safe.cpp
+
 example_input_string:
 	${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/input_string example/tools/input_string.cpp
 
@@ -55,6 +58,7 @@ example_csv:
 
 examples: example_memusage example_battery \
  example_time \
+ example_text_safe \
  example_cpuusage \
  example_serial example_salted_serial\
  example_one_time_pin \
