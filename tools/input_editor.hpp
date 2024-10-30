@@ -4,17 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include "random/string.hpp"
 
 namespace pai_input { 
-std::string generateRandomString(int length) {
-    std::string str;
-    std::srand(time(nullptr));
-    for (int i = 0; i < length; i++) {
-        char c = static_cast<char>(rand() % 26 + 'a');
-        str += c;
-    }
-    return str;
-};
 class TextEditor {
   public:
     void setPath(std::string path){
@@ -77,7 +69,7 @@ class TextEditor {
     void fileName(){
         this->file_path = (
             this->path+
-            cpp_editor_tool::generateRandomString(10)+
+            pai_random::string(10)+
             "."+
             this->extension
         );
