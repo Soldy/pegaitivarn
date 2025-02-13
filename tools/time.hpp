@@ -3,6 +3,7 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
+#include <cstdint>
 
 
 namespace pai_time{

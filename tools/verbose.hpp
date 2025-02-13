@@ -1,6 +1,7 @@
 #ifndef __PEGAITIVARN_VERBOSE_
 #define __PEGAITIVARN_VERBOSE_
 #include <string>
+#include <cstdint>
 #include <iostream>
 
 namespace pai_verbose{

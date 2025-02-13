@@ -55,7 +55,7 @@ std::string string (std::string title, std::string value){
       std::endl;
     std::cout << 
      "\u001b[A";
-    std::cin >> out;
+    std::getline(std::cin, out);
     return out;
 };
 

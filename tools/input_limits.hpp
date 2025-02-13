@@ -1,5 +1,7 @@
+
 #ifndef __PEGAITIVARN_INPUT_LIMITS_
 #define __PEGAITIVARN_INPUT_LIMITS_
+#include <cstdint>
 
 namespace pai_input { 
 
