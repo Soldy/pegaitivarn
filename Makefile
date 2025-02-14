@@ -5,6 +5,8 @@ CFLAGS_RELEASE = -O2 ${CFLAGS}
 
 BUILD_DIR = build
 
+TEST_BUILD = ${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/test_$(2) test/$(1)/$(2).cpp
+TEST_BUILD_TEXT = $(call TEST_BUILD,text,$(1))
 EXAMPLE_BUILD = ${C} ${CFLAGS_DEBUG} -o ${BUILD_DIR}/$(2) example/$(1)/$(2).cpp
 EXAMPLE_BUILD_TEXT = $(call EXAMPLE_BUILD,text,$(1))
 EXAMPLE_BUILD_TOOLS = $(call EXAMPLE_BUILD,tools,$(1))
@@ -13,6 +15,8 @@ EXAMPLE_BUILD_HWMON = $(call EXAMPLE_BUILD,hwmon,$(1))
 EXAMPLE_BUILD_BUFFER = $(call EXAMPLE_BUILD,buffer,$(1))
 EXAMPLE_BUILD_FILE = $(call EXAMPLE_BUILD,file,$(1))
 
+test_text_xml:
+	$(call TEST_BUILD_TEXT,xml)
 
 example_time:
 	$(call EXAMPLE_BUILD_TOOLS,time)
