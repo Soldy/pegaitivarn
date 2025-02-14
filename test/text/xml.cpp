@@ -18,7 +18,7 @@ TEST_CASE("pai_text::xml") {
       CHECK(
           pai_text::xmlSmart(test)
           == 
-          "<a href=http://test.est onclick=\"function something\" style=nothing/>"
+          "<a href=\"http://test.est\" onclick=\"function something\" style=nothing/>"
       );
     };
     SUBCASE("adding data") {
@@ -28,7 +28,7 @@ TEST_CASE("pai_text::xml") {
       CHECK(
           pai_text::xmlSmart(test)
           == 
-          "<a href=http://test.est onclick=\"function something\" style=nothing>some extra link text</a>"
+          "<a href=\"http://test.est\" onclick=\"function something\" style=nothing>some extra link text</a>"
       );
     };
     SUBCASE("xml") {
