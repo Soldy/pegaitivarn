@@ -1,8 +1,11 @@
 # WIT ?
 
-Pegaitivarn is a minimalistic AI helper and tester toolkit. 
-The main goal is to help to write AI tools as fast as possible. This includes sensors, some file formats, games, and situation supports. 
-Not just serve the purpose of helper. Sometimes, it serves as a simplification. Sometimes standardisation and simplifications. K.I.S.S.
+
+Pegaitivarn is a minimalistic AI helper and tester toolkit.
+The main goal is to help write AI tools and agents as fast as possible.
+This includes sensors, some file formats, games, and situation supports.
+Not just serve the purpose of helper. Sometimes, it serves as a simplification.
+K.I.S.S.
 
 
 # Elements
@@ -10,7 +13,7 @@ Not just serve the purpose of helper. Sometimes, it serves as a simplification. 
 ## Buffers
 
 Buffers hold some information before providing or changing or both. Like simple serial number generators, not UUID type uid generators, or config (env, config file)helper. 
-
+Some buffer data is utilized for analysis purposes, including support for XML and HTML formats.
 
 ## File
 
