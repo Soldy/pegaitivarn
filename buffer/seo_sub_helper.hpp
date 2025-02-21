@@ -1,5 +1,5 @@
-#ifndef __PEGAITIVARN_BUFFER_SEO_HELPER
-#define __PEGAITIVARN_BUFFER_SEO_HELPER
+#ifndef __PAI_BUFFER_SEO_HELPER
+#define __PAI_BUFFER_SEO_HELPER
 
 #include <string>
 #include <map>
