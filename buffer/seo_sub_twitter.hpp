@@ -14,6 +14,22 @@ class SeoSubTwitter{
     std::shared_ptr<
       pai_buffer::SeoSubHelper
     > _helper;
+    void addLayer(
+      std::string property_,
+      std::vector<std::string> values_
+    ){
+        if(this->_helper->propertyCheck(property_))
+          return this->_helper->add(
+            property_,
+            values_
+          );
+        std::string _ext_prop = ("twitter:"+property_);
+        if(this->_helper->propertyCheck(_ext_prop))
+          return this->_helper->add(
+            _ext_prop,
+            values_
+          );
+    };
   public:
     SeoSubTwitter(){
         this->_helper = std::make_shared<
@@ -37,10 +53,19 @@ class SeoSubTwitter{
     };
     void add(
       std::string property_,
+      std::string value_
+    ){
+        this->addLayer(
+          property_,
+          {value_}
+        );
+    };
+    void add(
+      std::string property_,
       std::vector<std::string> values_
     ){
-        this->_helper->add(
-          ("twitter:"+property_),
+        this->addLayer(
+          property_,
           values_
         );
     };
