@@ -8,9 +8,9 @@
 #include <fstream>
 #include <filesystem>
 
-namespace pai_cputemp { 
+namespace pai_cputemp {
 namespace fs = std::filesystem;
-struct Unit { 
+struct Unit {
     std::string name;
     std::string path;
     double temp;
@@ -24,6 +24,12 @@ class Reader{
         "cpu_thermal"
     };
     std::vector<Unit> units;
+    void add(std::string &dir, int &serial){
+        Unit next; 
+        next.path = this->hwmTempFile(dir, serial);
+        next.name = next.path;
+        this->units.push_back(next);
+    };
     std::string hwmDir (int &serial){
         return (
             "/sys/class/hwmon/hwmon"+
@@ -69,12 +75,6 @@ class Reader{
                 this->add(dir, i);
         }
     };
-    void add(std::string &dir, int &serial){
-        Unit next; 
-        next.path = this->hwmTempFile(dir, serial);
-        next.name = next.path;
-        this->units.push_back(next);
-    };
     void read(int &serial){
         std::string readed;
         std::ifstream temp_file;
@@ -98,14 +98,14 @@ class Reader{
             }
     };
     void refresh(){
-        for (int i{0}; i < this->units.size(); i++)
+        for (int i{0}; i < (int)this->units.size(); i++)
             this->read(i);
     };
     Unit get(int elem){
         Unit temp;
         if(
             elem < 0 ||
-            elem >= this->units.size()
+            elem >= (int)this->units.size()
         )
             return temp;
         temp = this->units[elem];
@@ -116,17 +116,17 @@ class Reader{
         if(
             start < 0 ||
             start > end ||
-            start >= this->units.size() ||
-            end >= this->units.size()
+            start >= (int)this->units.size() ||
+            end >= (int)this->units.size()
         )
             return temps;
-        for (int i{start}; i < this->units.size(); i++)
+        for (size_t i{(size_t)start}; i < this->units.size(); i++)
             temps.push_back(this->units[i]);
         return temps;
     };
     std::vector<Unit> get(std::vector<int> elements){
         std::vector<Unit> temps;
-        for (int i{0}; i < elements.size(); i++)
+        for (size_t i{0}; i < elements.size(); i++)
             temps.push_back(this->get(i));
         return temps;
     };
@@ -137,7 +137,7 @@ class Reader{
         double temp;
         if(
             elem < 0 ||
-            elem >= this->units.size()
+            elem >= (int)this->units.size()
         )
             return temp;
         temp = this->units[elem].temp;
@@ -148,8 +148,8 @@ class Reader{
         if(
             start < 0 ||
             start > end ||
-            start >= this->units.size() ||
-            end >= this->units.size()
+            start >= (int)this->units.size() ||
+            end >= (int)this->units.size()
         )
             return temps;
         for (int i{start}; i < end; i++)
@@ -158,14 +158,14 @@ class Reader{
     };
     std::vector<double> temp(std::vector<int> elements){
         std::vector<double> temps;
-        for (int i{0}; i < elements.size(); i++)
+        for (const int& i : elements)
             temps.push_back(this->temp(i));
         return temps;
     };
     std::vector<double> tempAll(){
         std::vector<double> temps;
-        for (int i{0}; i < this->units.size(); i++)
-            temps.push_back(this->units[i].temp);
+        for (const Unit& unit : this->units)
+            temps.push_back(unit.temp);
         return temps;
     };
 };
