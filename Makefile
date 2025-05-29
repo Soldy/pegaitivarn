@@ -57,6 +57,12 @@ example_battery:
 example_cpuusage:
 	$(call EXAMPLE_BUILD_HWMON,cpuusage)
 
+example_cputemp:
+	$(call EXAMPLE_BUILD_HWMON,cputemp)
+
+example_cpufreq:
+	$(call EXAMPLE_BUILD_HWMON,cpufreq)
+
 example_serial:
 	$(call EXAMPLE_BUILD_BUFFER,serial)
 
@@ -76,6 +82,7 @@ example_csv:
 	$(call EXAMPLE_BUILD_FILE,csv)
 
 examples: example_memusage example_battery \
+ example_text_xml \
  example_time \
  example_text_safe \
  example_cpuusage \
