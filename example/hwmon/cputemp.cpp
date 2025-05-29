@@ -8,6 +8,6 @@ int main(){
     temp->discovery();
     temp->refresh();
     temps = temp->tempAll();
-    for (int i{0}; i < temps.size(); i++)
+    for (size_t i{0}; i < temps.size(); i++)
         std::cout << temps[i] << std::endl;
 }
