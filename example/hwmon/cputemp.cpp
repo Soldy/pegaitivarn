@@ -8,6 +8,8 @@ int main(){
     temp->discovery();
     temp->refresh();
     temps = temp->tempAll();
-    for (size_t i{0}; i < temps.size(); i++)
+    for (size_t i{0}; i < temps.size(); i++){
         std::cout << temps[i] << std::endl;
+        std::cout << temp->human(i) << std::endl;
+    }
 }
