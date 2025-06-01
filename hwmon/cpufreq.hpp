@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <cmath>
 #include <iostream>
 #include <fstream>
 #include <filesystem>
@@ -99,6 +100,13 @@ class Reader{
         for (const Unit& unit : this->units)
             freqs.push_back(unit.freq);
         return freqs;
+    };
+    std::string human(int elem){
+        return (
+          std::to_string(
+            (std::round(this->units[elem].freq/10))/100
+          ).substr(0,4)+" Ghz"
+        );
     };
 
 };
