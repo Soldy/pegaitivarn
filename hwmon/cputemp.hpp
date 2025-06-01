@@ -168,6 +168,13 @@ class Reader{
             temps.push_back(unit.temp);
         return temps;
     };
+    std::string human(int elem){
+        return (
+          std::to_string(
+            this->units[elem].temp
+          ).substr(0,2)+"℃ "
+        );
+    };
 };
 }
 #endif
