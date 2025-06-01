@@ -8,6 +8,8 @@ int main(){
     freq->discovery();
     freq->refresh();
     freqs = freq->freqAll();
-    for (size_t i{0}; i < freqs.size(); i++)
+    for (size_t i{0}; i < freqs.size(); i++){
         std::cout << freqs[i] << std::endl;
+        std::cout << freq->human(i) << std::endl;
+    }
 }
