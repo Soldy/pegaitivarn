@@ -48,6 +48,9 @@ example_console_helper_termios:
 example_verbose:
 	$(call EXAMPLE_BUILD_TOOLS,verbose)
 
+example_menu:
+	$(call EXAMPLE_BUILD_TOOLS,menu)
+
 example_random_string:
 	$(call EXAMPLE_BUILD_TOOLS_RANDOM,string)
 
