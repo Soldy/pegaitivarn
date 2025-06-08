@@ -30,6 +30,9 @@ example_text_xml:
 example_text_join:
 	$(call EXAMPLE_BUILD_TEXT,join)
 
+example_text_onelinebar:
+	$(call EXAMPLE_BUILD_TEXT,onelinebar)
+
 example_file_path:
 	$(call EXAMPLE_BUILD_FILE,path)
 
