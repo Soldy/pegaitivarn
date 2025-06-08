@@ -33,6 +33,9 @@ example_text_join:
 example_text_onelinebar:
 	$(call EXAMPLE_BUILD_TEXT,onelinebar)
 
+example_text_quotebar:
+	$(call EXAMPLE_BUILD_TEXT,quotebar)
+
 example_file_path:
 	$(call EXAMPLE_BUILD_FILE,path)
 
