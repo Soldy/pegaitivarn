@@ -18,6 +18,9 @@ EXAMPLE_BUILD_FILE = $(call EXAMPLE_BUILD,file,$(1))
 test_text_xml:
 	$(call TEST_BUILD_TEXT,xml)
 
+test_text_safe:
+	$(call TEST_BUILD_TEXT,safe)
+
 example_time:
 	$(call EXAMPLE_BUILD_TOOLS,time)
 
