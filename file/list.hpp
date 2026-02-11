@@ -1,16 +1,15 @@
 #ifndef __CPP_JUST_TRIM_HPP_
 #error "Just trim is not included. Please include just_trim.hpp. https://github.com/Soldy/cpp_just_trim "
 #endif
-#ifndef __CPP_PAI_CSV_HPP_
-#define __CPP_PAI_CSV_HPP_
+#ifndef __PEGAITIVARN_FILE_SIMPLE_LIST_HPP_
+#define __PEGAITIVARN_FILE_SIMPLE_LIST_HPP_
 #include <string>
 #include <vector>
 #include <fstream>
-#include <iostream>
 #include "../text/trim.hpp"
 
-namespace simple_list{
-std::vector<std::string> read (std::string file_name){
+namespace pai_file{
+std::vector<std::string> simpleListRead (std::string file_name){
     std::vector<std::string> out;
     std::string line;
     std::ifstream list_file;
